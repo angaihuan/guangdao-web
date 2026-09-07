@@ -11,181 +11,151 @@
         /* --- 导航栏样式 --- */
         header { background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .logo h1 { margin: 0; font-size: 24px; color: #003366; }
-        .logo span { color: #cc0000; font-weight: bold; }
-        .logo p { margin: 0; font-size: 10px; color: #666; letter-spacing: 1px; }
-        .contact-info { text-align: right; }
-        .contact-info span { display: block; font-size: 12px; color: #666; }
-        .contact-info strong { font-size: 18px; color: #cc0000; }
+        .logo h1 { margin: 0; font-size: 24px; color: #333; }
+        .logo span { color: #d9534f; font-weight: bold; }
+        .contact-info { text-align: right; font-size: 14px; }
+        .phone { font-size: 20px; color: #d9534f; font-weight: bold; }
         
-        nav { background-color: #003366; }
-        .nav-menu { max-width: 1200px; margin: 0 auto; list-style: none; padding: 0; display: flex; flex-wrap: wrap; }
-        .nav-menu li { margin: 0; }
-        .nav-menu a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-weight: bold; transition: background 0.3s; }
-        .nav-menu a:hover, .nav-menu a.active { background-color: #004d99; }
+        nav { background-color: #1b3a5c; }
+        .menu { max-width: 1200px; margin: 0 auto; list-style: none; padding: 0; display: flex; flex-wrap: wrap; }
+        .menu li a { display: block; padding: 15px 25px; color: white; text-decoration: none; transition: 0.3s; }
+        .menu li a:hover { background-color: #d9534f; }
 
-        /* --- 主要内容区域 --- */
-        main { max-width: 1000px; margin: 40px auto; padding: 0 20px; min-height: 60vh; }
-        
-        /* 章节样式 */
-        section { margin-bottom: 60px; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); scroll-margin-top: 100px; }
-        h2 { color: #003366; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-top: 0; }
-        h3 { color: #cc0000; margin-top: 30px; }
-        
-        /* --- 图片通用样式 --- */
-        .content-image {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            display: block;
-            margin: 20px auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .image-caption {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            margin-top: -10px;
-            margin-bottom: 20px;
-        }
+        /* --- 通用容器 --- */
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; background: white; padding-bottom: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h2 { color: #1b3a5c; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; }
+        h3 { color: #333; margin-top: 30px; }
 
-        /* 表格样式 */
+        /* --- 关键修改：图片样式 --- */
+        .content-img {
+            max-width: 100%;       /* 限制最大宽度不超过容器 */
+            height: auto;          /* 高度自动适应 */
+            display: block;        /* 块级显示 */
+            margin: 20px auto;     /* 居中显示 */
+            border-radius: 4px;    /* 圆角 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 阴影 */
+        }
+        .img-caption { text-align: center; color: #666; font-size: 14px; margin-top: -10px; margin-bottom: 20px; }
+
+        /* --- 表格样式 --- */
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #f2f2f2; color: #003366; }
+        th { background-color: #f2f2f2; color: #333; }
 
         /* --- 页脚 --- */
-        footer { background-color: #333; color: white; text-align: center; padding: 40px 20px; margin-top: 60px; }
-        footer p { margin: 5px 0; font-size: 14px; color: #ccc; }
-
-        /* --- 响应式 --- */
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; text-align: center; }
-            .contact-info { margin-top: 10px; text-align: center; }
-            .nav-menu { flex-direction: column; }
-            .nav-menu a { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        }
+        footer { background-color: #1b3a5c; color: white; text-align: center; padding: 40px 0; margin-top: 60px; }
+        .footer-content p { margin: 5px 0; opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <!-- 顶部导航 -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <h1>光刀机电 <span>Light-Saber</span></h1>
-                <p>SHANGHAI GUANGDAO ELECTROMECHANICAL TECHNOLOGY CO., LTD.</p>
-            </div>
-            <div class="contact-info">
-                <span>全国服务热线</span>
-                <strong>13482171091</strong>
-            </div>
+<!-- 顶部导航 -->
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <h1>光刀机电 <span>Light-Saber</span></h1>
+            <small>SHANGHAI GUANGDAO ELECTROMECHANICAL TECHNOLOGY CO., LTD.</small>
         </div>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="#home" class="active">首页</a></li>
-                <li><a href="#business">三大业务</a></li>
-                <li><a href="#mb-agent">MB设备代理</a></li>
-                <li><a href="#service">售后服务</a></li>
-                <li><a href="#upgrade">台架升级</a></li>
-                <li><a href="#about">关于我们</a></li>
-                <li><a href="#contact">联系我们</a></li>
-            </ul>
-        </nav>
-    </header>
+        <div class="contact-info">
+            <div>全国服务热线</div>
+            <div class="phone">13482171091</div>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li><a href="#">首页</a></li>
+            <li><a href="#business">三大业务</a></li>
+            <li><a href="#mb">MB设备代理</a></li>
+            <li><a href="#service">售后服务</a></li>
+            <li><a href="#upgrade">台架升级</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <!-- 首页欢迎语 -->
-        <section id="home">
-            <h2>欢迎来到上海光刀机电</h2>
-            <p>专注于汽车NVH测试领域，提供世界顶级的BSR测试设备及专业的定制化工程服务。</p>
-        </section>
+<div class="container">
+    
+    <!-- 首页/公司简介 -->
+    <section id="about">
+        <h2>关于我们</h2>
+        <p>上海光刀机电科技有限公司致力于振动测试与控制领域，提供专业的振动台架设计、制造及升级服务。我们代理进口高端振动设备，并提供全方位的售后技术支持。</p>
+    </section>
 
-        <!-- 核心业务概览 -->
-        <section id="business">
-            <h2>三大核心业务</h2>
-            <p>我们致力于为客户提供从设备供应、维护保养到系统升级的一站式解决方案。</p>
-            <ul>
-                <li><strong>MB设备国内代理：</strong> 英国MB Dynamics全系列BSR测试设备。</li>
-                <li><strong>专属售后服务：</strong> 24小时响应，长三角48小时上门。</li>
-                <li><strong>台架定制升级：</strong> 针对老旧系统的全面性能焕新。</li>
-            </ul>
-        </section>
+    <!-- MB设备代理 -->
+    <section id="mb">
+        <h2>MB设备代理</h2>
+        <p>作为MB Dynamics的授权代理商，我们提供全系列振动测试系统。</p>
+        <table>
+            <tr>
+                <th>产品系列</th>
+                <th>描述</th>
+                <th>应用领域</th>
+            </tr>
+            <tr>
+                <td>Modal Shakers</td>
+                <td>模态激振器，适用于结构动力学测试</td>
+                <td>航空航天、汽车</td>
+            </tr>
+            <tr>
+                <td>Vibration Controllers</td>
+                <td>高性能振动控制器</td>
+                <td>实验室、生产线</td>
+            </tr>
+        </table>
+        
+        <!-- 图片1：MB激振器特写 -->
+        <img src="mb-shaker.jpg" alt="MB激振器" class="content-img">
+        <div class="img-caption">MB 激振器产品细节展示</div>
+    </section>
 
-        <!-- MB设备代理详情 -->
-        <section id="mb-agent">
-            <h2>MB设备国内代理</h2>
-            <p>作为MB Dynamics的中国独家代理，我们提供包括Energizer激振器、Millenium控制系统在内的全系列产品。</p>
-            
-            <!-- 图片1：激振器 -->
-            <img src="mb-shaker.jpg" alt="MB激振器" class="content-image">
-            <div class="image-caption">MB Dynamics 高精度激振器与控制系统</div>
+    <!-- 售后服务 -->
+    <section id="service">
+        <h2>售后服务</h2>
+        <p>我们提供从设备安装调试到定期维护保养的全套服务。</p>
+        <ul>
+            <li>振动台动圈更换与维修</li>
+            <li>控制系统软件升级</li>
+            <li>隔声罩定制与维护</li>
+        </ul>
+        
+        <!-- 图片2：隔声罩 (原图位置) -->
+        <img src="sound-hood.jpg" alt="隔声罩" class="content-img">
+        <div class="img-caption">光刀自主设计生产的拼装式隔声罩系统</div>
+    </section>
 
-            <table>
-                <tr>
-                    <th>产品系列</th>
-                    <th>主要型号/特点</th>
-                </tr>
-                <tr>
-                    <td>BSR激励器</td>
-                    <td>Energizer Black / Grey / White</td>
-                </tr>
-                <tr>
-                    <td>动态控制系统</td>
-                    <td>Millenium (第三代控制器 + Win11)</td>
-                </tr>
-                <tr>
-                    <td>功率放大器</td>
-                    <td>50N - 4000N 推力范围</td>
-                </tr>
-            </table>
-        </section>
+    <!-- 台架升级 -->
+    <section id="upgrade">
+        <h2>台架升级</h2>
+        <p>针对老旧振动台架进行现代化改造，提升推力、频率响应及控制精度。</p>
+        <p>我们的升级方案包括：</p>
+        <ol>
+            <li>机械结构加固与润滑系统更新</li>
+            <li>驱动线圈重新绕制或更换</li>
+            <li>数字化控制系统替换模拟系统</li>
+        </ol>
 
-        <!-- 售后服务详情 -->
-        <section id="service">
-            <h2>专属售后服务</h2>
-            <p>我们拥有经验丰富的工程师团队，为您的设备保驾护航。</p>
-            
-            <!-- 【已交换】这里现在显示：大型台架/维保现场 -->
-            <img src="vibration-table.jpg" alt="维保现场" class="content-image">
-            <div class="image-caption">专业工程师现场维保与系统调试</div>
+        <!-- 图片3：大型台架 (原图位置) -->
+        <img src="vibration-table.jpg" alt="大型振动台架" class="content-img">
+        <div class="img-caption">大型振动台架升级改造现场</div>
+    </section>
 
-            <h3>服务内容：</h3>
-            <ul>
-                <li>系统控制器软硬件升级</li>
-                <li>激振器弹簧片定期更换</li>
-                <li>功放模块维修与备件供应</li>
-                <li>年度CNAS校准服务</li>
-            </ul>
-        </section>
+    <!-- 联系方式 -->
+    <section id="contact">
+        <h2>联系我们</h2>
+        <p><strong>电话：</strong> 13482171091</p>
+        <p><strong>地址：</strong> 上海市奉贤区场中路629号</p>
+        <p><strong>邮箱：</strong> info@guangdao-tech.com</p>
+    </section>
 
-        <!-- 台架升级详情 -->
-        <section id="upgrade">
-            <h2>台架定制升级服务</h2>
-            <p>针对服役多年的MB BSR测试系统，我们提供高性价比的升级方案，使其性能达到最新标准。</p>
-            
-            <!-- 【已交换】这里现在显示：隔声罩/升级方案 -->
-            <img src="sound-hood.jpg" alt="隔声罩升级" class="content-image">
-            <div class="image-caption">定制化隔声罩与高频连接杆升级方案</div>
+</div>
 
-            <h3>升级亮点：</h3>
-            <p>通过更换高频连接杆和支撑底座，匹配200-300Hz高频试验需求，显著提升测试精度。</p>
-        </section>
-
-        <!-- 关于我们 & 联系 -->
-        <section id="about">
-            <h2>关于我们</h2>
-            <p><strong>地址：</strong> 上海市奉贤区场中路629号</p>
-            <p><strong>电话：</strong> 13482171091</p>
-            <p><strong>邮箱：</strong> tide.li@light-saber.com.cn</p>
-        </section>
-    </main>
-
-    <footer id="contact">
-        <p>Copyright © 2016-2026 上海光刀机电科技有限公司</p>
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 上海光刀机电科技有限公司 版权所有</p>
         <p>Shanghai Guangdao Electromechanical Technology Co., Ltd.</p>
-    </footer>
+    </div>
+</footer>
 
 </body>
 </html>
