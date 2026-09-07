@@ -6,156 +6,125 @@
     <title>上海光刀机电科技有限公司 - Light-Saber</title>
     <style>
         /* --- 基础样式 --- */
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; background-color: #f9f9f9; }
+        html { scroll-behavior: smooth; } /* 添加平滑滚动效果 */
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; background-color: #f9f9f9; padding-top: 80px; } /* 增加顶部内边距防止被导航栏遮挡 */
         
         /* --- 导航栏样式 --- */
-        header { background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .logo h1 { margin: 0; font-size: 24px; color: #333; }
-        .logo span { color: #d9534f; font-weight: bold; }
-        .contact-info { text-align: right; font-size: 14px; }
-        .phone { font-size: 20px; color: #d9534f; font-weight: bold; }
+        header { background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; height: 80px; display: flex; flex-direction: column; justify-content: center; }
+        .top-bar { background-color: #333; color: #fff; font-size: 12px; padding: 5px 0; text-align: center; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 24px; font-weight: bold; color: #d32f2f; text-decoration: none; }
+        .logo span { color: #333; font-size: 14px; font-weight: normal; display: block; }
         
-        nav { background-color: #1b3a5c; }
-        .menu { max-width: 1200px; margin: 0 auto; list-style: none; padding: 0; display: flex; flex-wrap: wrap; }
-        .menu li a { display: block; padding: 15px 25px; color: white; text-decoration: none; transition: 0.3s; }
-        .menu li a:hover { background-color: #d9534f; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: #333; font-weight: 500; padding: 10px 15px; transition: color 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: #d32f2f; border-bottom: 2px solid #d32f2f; }
 
-        /* --- 通用容器 --- */
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; background: white; padding-bottom: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h2 { color: #1b3a5c; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; }
-        h3 { color: #333; margin-top: 30px; }
-
-        /* --- 关键修改：图片样式 --- */
-        .content-img {
-            max-width: 100%;       /* 限制最大宽度不超过容器 */
-            height: auto;          /* 高度自动适应 */
-            display: block;        /* 块级显示 */
-            margin: 20px auto;     /* 居中显示 */
-            border-radius: 4px;    /* 圆角 */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 阴影 */
+        /* --- 通用板块样式 --- */
+        section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; background: #fff; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h2 { border-left: 5px solid #d32f2f; padding-left: 15px; margin-bottom: 30px; color: #333; }
+        
+        /* --- 图片样式修复 (关键) --- */
+        .content-image { 
+            max-width: 100%; /* 限制最大宽度不超过容器 */
+            height: auto;    /* 高度自动适应 */
+            display: block;  /* 块级显示 */
+            margin: 20px auto; /* 居中显示 */
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .img-caption { text-align: center; color: #666; font-size: 14px; margin-top: -10px; margin-bottom: 20px; }
+        .image-caption { text-align: center; font-size: 14px; color: #666; margin-top: -10px; margin-bottom: 20px; }
 
-        /* --- 表格样式 --- */
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #f2f2f2; color: #333; }
-
-        /* --- 页脚 --- */
-        footer { background-color: #1b3a5c; color: white; text-align: center; padding: 40px 0; margin-top: 60px; }
-        .footer-content p { margin: 5px 0; opacity: 0.8; }
+        /* --- 底部联系我们样式 --- */
+        #contact { background-color: #2c3e50; color: #fff; padding: 40px 20px; text-align: center; max-width: 100%; border-radius: 0; margin-bottom: 0; }
+        #contact h2 { border-left: none; color: #fff; }
+        .contact-info p { font-size: 18px; margin: 10px 0; }
+        .phone-big { font-size: 32px; color: #e74c3c; font-weight: bold; margin: 20px 0; display: block; }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            nav ul li { margin: 5px 10px; }
+        }
     </style>
 </head>
 <body>
 
-<!-- 顶部导航 -->
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <h1>光刀机电 <span>Light-Saber</span></h1>
-            <small>SHANGHAI GUANGDAO ELECTROMECHANICAL TECHNOLOGY CO., LTD.</small>
-        </div>
-        <div class="contact-info">
-            <div>全国服务热线</div>
-            <div class="phone">13482171091</div>
-        </div>
+    <!-- 顶部黑条 -->
+    <div class="top-bar">
+        欢迎访问上海光刀机电科技有限公司官网 | 全国服务热线：13482171091
     </div>
-    <nav>
-        <ul class="menu">
-            <li><a href="#">首页</a></li>
-            <li><a href="#business">三大业务</a></li>
-            <li><a href="#mb">MB设备代理</a></li>
-            <li><a href="#service">售后服务</a></li>
-            <li><a href="#upgrade">台架升级</a></li>
-            <li><a href="#about">关于我们</a></li>
-            <li><a href="#contact">联系我们</a></li>
-        </ul>
-    </nav>
-</header>
 
-<div class="container">
-    
-    <!-- 首页/公司简介 -->
-    <section id="about">
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                光刀机电 Light-Saber
+                <span>SHANGHAI GUANGDAO ELECTROMECHANICAL TECHNOLOGY CO., LTD.</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#business">三大业务</a></li>
+                    <li><a href="#mb-agent">MB设备代理</a></li>
+                    <li><a href="#after-sales">售后服务</a></li>
+                    <li><a href="#upgrade">台架升级</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#contact">联系我们</a></li> <!-- 这里指向底部的 contact -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页 / 公司简介 -->
+    <section id="home">
         <h2>关于我们</h2>
-        <p>上海光刀机电科技有限公司致力于振动测试与控制领域，提供专业的振动台架设计、制造及升级服务。我们代理进口高端振动设备，并提供全方位的售后技术支持。</p>
+        <p>上海光刀机电科技有限公司致力于振动与噪声控制领域，提供专业的测试设备代理、台架定制升级及售后维保服务。</p>
     </section>
 
     <!-- MB设备代理 -->
-    <section id="mb">
+    <section id="mb-agent">
         <h2>MB设备代理</h2>
-        <p>作为MB Dynamics的授权代理商，我们提供全系列振动测试系统。</p>
-        <table>
-            <tr>
-                <th>产品系列</th>
-                <th>描述</th>
-                <th>应用领域</th>
-            </tr>
-            <tr>
-                <td>Modal Shakers</td>
-                <td>模态激振器，适用于结构动力学测试</td>
-                <td>航空航天、汽车</td>
-            </tr>
-            <tr>
-                <td>Vibration Controllers</td>
-                <td>高性能振动控制器</td>
-                <td>实验室、生产线</td>
-            </tr>
-        </table>
-        
-        <!-- 图片1：MB激振器特写 -->
-        <img src="mb-shaker.jpg" alt="MB激振器" class="content-img">
-        <div class="img-caption">MB 激振器产品细节展示</div>
+        <p>我们要代理美国MB公司的激振器及相关配件，提供原装正品保障。</p>
+        <!-- 这里可以放 MB 产品的图片 -->
     </section>
 
     <!-- 售后服务 -->
-    <section id="service">
-        <h2>售后服务</h2>
-        <p>我们提供从设备安装调试到定期维护保养的全套服务。</p>
-        <ul>
-            <li>振动台动圈更换与维修</li>
-            <li>控制系统软件升级</li>
-            <li>隔声罩定制与维护</li>
-        </ul>
+    <section id="after-sales">
+        <h2>售后服务 & 维保</h2>
+        <p>我们提供专业的振动台架维修、保养服务，确保您的设备处于最佳运行状态。</p>
         
-        <!-- 图片2：隔声罩 (原图位置) -->
-        <img src="sound-hood.jpg" alt="隔声罩" class="content-img">
-        <div class="img-caption">光刀自主设计生产的拼装式隔声罩系统</div>
+        <!-- 维保图片位置 (已交换) -->
+        <img src="vibration-table.jpg" alt="大型振动台架维保现场" class="content-image">
+        <div class="image-caption">专业团队进行大型台架检修与维护</div>
     </section>
 
     <!-- 台架升级 -->
     <section id="upgrade">
-        <h2>台架升级</h2>
-        <p>针对老旧振动台架进行现代化改造，提升推力、频率响应及控制精度。</p>
-        <p>我们的升级方案包括：</p>
-        <ol>
-            <li>机械结构加固与润滑系统更新</li>
-            <li>驱动线圈重新绕制或更换</li>
-            <li>数字化控制系统替换模拟系统</li>
-        </ol>
-
-        <!-- 图片3：大型台架 (原图位置) -->
-        <img src="vibration-table.jpg" alt="大型振动台架" class="content-img">
-        <div class="img-caption">大型振动台架升级改造现场</div>
+        <h2>台架定制升级</h2>
+        <p>针对老旧或特殊需求的振动台架，我们提供隔声罩定制、台面改造等升级方案。</p>
+        
+        <!-- 升级图片位置 (已交换) -->
+        <img src="sound-hood.jpg" alt="拼装式隔声罩系统" class="content-image">
+        <div class="image-caption">光刀自主设计生产的拼装式隔声罩系统</div>
     </section>
 
-    <!-- 联系方式 -->
+    <!-- 联系我们 (新增/修复部分) -->
     <section id="contact">
         <h2>联系我们</h2>
-        <p><strong>电话：</strong> 13482171091</p>
-        <p><strong>地址：</strong> 上海市奉贤区场中路629号</p>
-        <p><strong>邮箱：</strong> info@guangdao-tech.com</p>
+        <div class="contact-info">
+            <p>如有任何需求，欢迎随时致电：</p>
+            <span class="phone-big">13482171091</span>
+            <p>联系人：光刀机电技术部李川</p>
+            <p>地址：上海市奉贤区场中路629号</p>
+        </div>
     </section>
 
-</div>
-
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2024 上海光刀机电科技有限公司 版权所有</p>
-        <p>Shanghai Guangdao Electromechanical Technology Co., Ltd.</p>
-    </div>
-</footer>
+    <footer style="text-align: center; padding: 20px; background: #222; color: #888; font-size: 12px;">
+        &copy; 2024 上海光刀机电科技有限公司 版权所有
+    </footer>
 
 </body>
 </html>
